@@ -15,11 +15,11 @@ class Problem extends Migration
     {
         Schema::create('m_problem', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('problemId');
+            $table->string('problemId', 191);
             $table->dateTime('problemUpdateTime');
-            $table->text('problemTitle');
             $table->string('problemCategory');
-            $table->text('selectItem1');
+            $table->text('problemTitle');
+            $table->text('selectItem1')->nullable();
             $table->text('selectItem2')->nullable();
             $table->text('selectItem3')->nullable();
             $table->text('selectItem4')->nullable();

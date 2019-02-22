@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\problem;
 use Illuminate\Http\Request;
+use Models;
 
 class ProblemController extends Controller
 {
@@ -14,7 +15,8 @@ class ProblemController extends Controller
      */
     public function index()
     {
-        //
+        $temp = problem::all();
+        dump($temp);
     }
 
     /**
