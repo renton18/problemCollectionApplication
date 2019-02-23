@@ -8,80 +8,52 @@ use Models;
 
 class ProblemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
-        $temp = problem::all();
-        dump($temp);
-    }
+        $query = problem::query();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+        $problemId = $request-> problemId;
+        $problemCategory = $request->problemCategory;
+
+        if (!empty($problemId)) {
+            $query->Where('problemID', 'like', '%'. $problemId.'%') ;
+        }
+        if (!empty($problemCategory)) {
+            $query->orWhere('problemCategory', 'like', '%'. $problemCategory.'%') ;
+        }
+
+        $problems = $query->orderBy('problemId', 'desc')->paginate(10);
+        return view('problem.index', [ 'problems' => $problems, 'request' => $request]);
+    }
+    public function create(Request $request)
     {
-        //
+        $data = $request->all();
+        return view('problem.create.create')->with($data);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $problem = new problem();
+        $problem->create($request->all());
+        return redirect()->to('problem');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\problem  $problem
-     * @return \Illuminate\Http\Response
-     */
     public function show(problem $problem)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\problem  $problem
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(problem $problem)
+    public function edit(Request $request)
     {
-        //
+        $data = $request->all();
+        return view('problem.edit.edit')->with($data);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\problem  $problem
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, problem $problem)
     {
-        //
+        // $guardedに指定していないものは全て入り得る
+        $problem->update($request->all());
+        return redirect()->to('problem');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\problem  $problem
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(problem $problem)
+    public function destroy(Problem $problem)
     {
-        //
+        $problem->delete();
+        return redirect()->to('problem');
     }
 }

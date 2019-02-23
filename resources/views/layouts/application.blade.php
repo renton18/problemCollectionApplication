@@ -5,13 +5,14 @@
   <meta charset="utf-8">
   <title>@yield('title')</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="screen">
-  <link rel="stylesheet" href="{{ url('/') }}/bootstrap.min.css" />
-  <link href="/css/sticky-footer.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- Flat-UI関連 -->
+  <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="css/flat-ui.css" rel="stylesheet">
 </head>
 
 <body>
-  <div id="app"> 
+  <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
       <div class="container">
         <!-- <a class="navbar-brand" href="{{ url('/topmenu') }}">
@@ -45,12 +46,10 @@
   </div>
 
   <div class="container">
-    <div class="row" id="content">
       <!-- メインコンテンツ -->
       @yield('content')
-    </div>
   </div>
-  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="/js/app.js" defer></script>
   @yield('script')
 </body>
 </html>

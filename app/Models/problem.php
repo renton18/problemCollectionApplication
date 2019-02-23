@@ -9,4 +9,7 @@ class problem extends Model
 {
     use SoftDeletes;
     protected $table = 'm_problem';
+    protected $guarded = [
+    'id',
+    ];
 }
