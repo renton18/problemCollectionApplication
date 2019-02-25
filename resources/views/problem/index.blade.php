@@ -4,7 +4,7 @@
 @section('script')
 <script>
   $(function() {
-    $(".btn-dell").click(function() {
+    $(".alert-msg").click(function() {
       if (confirm("本当に削除しますか？")) {
       } else {
         return false;
@@ -37,8 +37,8 @@
     </div>
   </div>
 
-  <table class="table table-condensed table-striped table-hover">
-    <thead>
+  <table class="table table-sm able-responsive table-striped table-hover">
+    <thead class="thead-dark">
       <tr>
         <th>問題ID</th>
         <th>カテゴリ</th>
@@ -78,7 +78,7 @@
             <a href="{{ route('problem.edit', $problem) }}" class="btn btn-primary btn-sm">編集</a>&nbsp;
             <form action="{{ route('problem.delete', $problem) }}" method="post">
               @csrf
-              <input type="submit" value="削除" class="btn btn-danger btn-sm btn-dell">
+              <input type="submit" value="削除" class="btn btn-danger btn-sm alert-msg">
             </form>
           </div>
         </td>

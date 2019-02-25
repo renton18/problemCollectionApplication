@@ -9,6 +9,7 @@ class problem extends Model
 {
     use SoftDeletes;
     protected $table = 'm_problem';
+    protected $dates = [ 'problemUpdateTime'];
     protected $guarded = [
     'id',
     ];

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\problem;
 use Illuminate\Http\Request;
-use Models;
 
 class ProblemController extends Controller
 {
@@ -12,7 +11,7 @@ class ProblemController extends Controller
     {
         $query = problem::query();
 
-        $problemId = $request-> problemId;
+        $problemId = $request->problemId;
         $problemCategory = $request->problemCategory;
 
         if (!empty($problemId)) {
@@ -36,10 +35,6 @@ class ProblemController extends Controller
         $problem->create($request->all());
         return redirect()->to('problem');
     }
-    public function show(problem $problem)
-    {
-        //
-    }
     public function edit(Request $request)
     {
         $data = $request->all();
@@ -49,11 +44,6 @@ class ProblemController extends Controller
     {
         // $guardedに指定していないものは全て入り得る
         $problem->update($request->all());
-        return redirect()->to('problem');
-    }
-    public function destroy(Problem $problem)
-    {
-        $problem->delete();
         return redirect()->to('problem');
     }
 }

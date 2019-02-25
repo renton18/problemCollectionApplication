@@ -25,6 +25,7 @@ class Problem extends Migration
             $table->text('selectItem4')->nullable();
             $table->text('selectItem5')->nullable();
             $table->text('selectItem6')->nullable();
+            $table->string('answer');
             $table->text('memo')->nullable();
             $table->boolean('yesNoProblemFlag');
             $table->integer('explainId')->nullable()->default(0);

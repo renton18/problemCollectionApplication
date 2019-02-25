@@ -3,7 +3,11 @@
 use App\Models\problem;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('top');
+})->name('index');
+Route::group(['prefix' => 'practice'], function () {
+    Route::get('/', 'PracticeController@index')->name('practice.index');
+    Route::post('score', 'PracticeController@score')->name('practice.score');
 });
 
 Route::group(['prefix' => 'problem'], function () {
