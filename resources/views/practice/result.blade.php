@@ -1,9 +1,13 @@
 @extends('layouts.application')
 @section('title', '採点結果')
 
+@section('script')
+<script type="text/javascript">
+</script>
+@endsection
+
 @section('content')
-<br>
-<div class="col-md-12 text-right">
+<div class="col-md-12 text-right" style="margin:10px;">
   <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
     <div class="card-header">
       {{$answers[0]->answerDateTime->format('Y年m月d日 H:i')}}&nbsp&nbsp
@@ -41,5 +45,4 @@
     </tbody>
   </table>
 </div>
-
 @endsection

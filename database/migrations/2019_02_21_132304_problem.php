@@ -19,6 +19,7 @@ class Problem extends Migration
             $table->dateTime('problemUpdateTime');
             $table->string('problemCategory');
             $table->text('problemTitle');
+            $table->string('problemImageUrl')->nullable();
             $table->text('selectItem1')->nullable();
             $table->text('selectItem2')->nullable();
             $table->text('selectItem3')->nullable();

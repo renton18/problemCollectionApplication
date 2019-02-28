@@ -15,23 +15,15 @@
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
       <div class="container">
-        <a class="navbar-brand" href="{{ route('index') }}">
+        <h4>
+          情報セキュリティ管理士認定試験　オンライン無料問題集
+        </h4>
+        {{-- <a class="navbar-brand" href="{{ route('index') }}">
           Top
-        </a>
-
+        </a> --}}
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav mr-auto">
-            {{--  <li class="nav-item">
-              <a class="nav-link" href="">
-                menu1
-              </a>
-            </li>  --}}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('practice.index') }}">
-                問題集
-              </a>
-            </li>
           </ul>
 
           <ul class="navbar-nav">
@@ -45,7 +37,7 @@
     </nav>
   </div>
 
-  <div class="container">
+  <div class="container-fluid">
       <!-- メインコンテンツ -->
       @yield('content')
   </div>

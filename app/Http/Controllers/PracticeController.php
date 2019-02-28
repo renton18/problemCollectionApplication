@@ -8,11 +8,11 @@ use App\Models\answer;
 
 class PracticeController extends Controller
 {
-    public function index(int $pageNumber = 1)
+    public function start(int $pageNumber = 1)
     {
         $query = problem::query();
-        $problems = $query->orderBy('problemId')->get();
-        return view('practice.index', ['problems' => $problems]);
+        $problems = $query->orderBy('id')->get();
+        return view('practice.start', ['problems' => $problems]);
     }
     public function score(Request $request)
     {
@@ -45,9 +45,7 @@ class PracticeController extends Controller
         $answers = answer::where('userId', 'user1')
                     ->where('answerDateTime', $answerDateTime)
                     ->get();
-        // dd($answers);
-        $problems = problem::where('userID', 'user1');
-
+        // $problems = problem::where('userID', 'user1');
         return view('practice.result')->with('answers', $answers);
     }
 }

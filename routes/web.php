@@ -6,7 +6,10 @@ Route::get('/', function () {
     return view('top');
 })->name('index');
 Route::group(['prefix' => 'practice'], function () {
-    Route::get('/', 'PracticeController@index')->name('practice.index');
+    Route::get('/', function () {
+        return view('practice/index');
+    })->name('problem.show');
+    Route::get('start', 'PracticeController@start')->name('practice.start');
     Route::post('score', 'PracticeController@score')->name('practice.score');
 });
 
