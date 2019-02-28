@@ -14,7 +14,20 @@
       {{$answers[0]->userId}}
     </div>
     <div class="card-body">
-      <h4 class="card-title">VeryGood</h4>
+      <h4 class="card-title">
+        @if($answers->where('result', '==', '1')->count() / $answers->count() * 100 == '100') 
+          Perfect!
+        @elseif ($answers->where('result', '==', '1')->count() / $answers->count() * 100 > '90') 
+          Excellent!
+        @elseif ($answers->where('result', '==', '1')->count() / $answers->count() * 100 > '70') 
+          VeryGood
+        @elseif ($answers->where('result', '==', '1')->count() / $answers->count() * 100 > '50') 
+          Good
+        @else
+          Study harder
+        @endif
+        (正解率：{{$answers->where('result', '==', '1')->count() / $answers->count() * 100}}%)
+      </h4>
       <p class="card-text">
         正解：{{$answers->where('result', '==', '1')->count()}}&nbsp
         不正解：{{$answers->where('result', '==', '0')->count()}}&nbsp
@@ -40,6 +53,7 @@
         <td>{{$answer->problemId}}</td>
         <td>@if($answer->result=='1') 正解 @else 不正解 @endif</td>
         <td>{{$answer->answer}}</td>
+        <td>{{$answer->problem->answer}}</td>
       </tr>
       @endforeach
     </tbody>

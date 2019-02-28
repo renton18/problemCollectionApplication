@@ -13,4 +13,12 @@ class problem extends Model
     protected $guarded = [
     'id',
     ];
+
+    // //primaryKeyの変更
+    // protected $primaryKey = "problemId";
+    //hasMany設定
+    public function answers()
+    {
+        return $this->hasMany('App\Models\answer', "problemId", "problemId");
+    }
 }

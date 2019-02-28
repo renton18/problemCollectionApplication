@@ -41,10 +41,16 @@ class PracticeController extends Controller
                 ]
             );
         }
-
+        
         $answers = answer::where('userId', 'user1')
                     ->where('answerDateTime', $answerDateTime)
                     ->get();
+        // foreach ($answers as $problem) {
+        //     dump($problem);
+        //     // リレ ーション先のRoleモデルにアクセスできます
+        // }
+        // dump($answers->problem);
+
         // $problems = problem::where('userID', 'user1');
         return view('practice.result')->with('answers', $answers);
     }

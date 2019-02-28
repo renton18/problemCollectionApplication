@@ -13,4 +13,10 @@ class answer extends Model
     protected $guarded = [
     'id',
     ];
+
+    //belongsTo設定
+    public function problem()
+    {
+        return $this->belongsTo('App\Models\problem', "problemId", "problemId");
+    }
 }

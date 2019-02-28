@@ -98,7 +98,6 @@
         {{-- <h4 class="card-title">Secondary card title</h4> --}}
         <p class="card-text">
           {{$problem->problemTitle}}
-
           @if ($problem->yesNoProblemFlag == '1')
             <div class="form-group">
               <div class="row col-md-12">
